@@ -101,6 +101,9 @@ export default function Home() {
                 <p>{nft.description}</p>
               </div>
               <div>
+                <p>Seller: {nft.seller}</p>
+              </div>
+              <div>
                 <p>{nft.price} Matic</p>
                 <button>Buy</button>
               </div>
