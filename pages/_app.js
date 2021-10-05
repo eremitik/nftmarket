@@ -47,7 +47,7 @@ function MyApp({ Component, pageProps }) {
           <Link href="/">
             <Links>Home</Links>
           </Link>
-          <Link href="/create">
+          <Link href="/createitem">
             <Links>List NFT</Links>
           </Link>
           <Link href="/myassets">
