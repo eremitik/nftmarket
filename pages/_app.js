@@ -47,13 +47,13 @@ function MyApp({ Component, pageProps }) {
             <Links>Home</Links>
           </Link>
           <Link href="/create">
-            <Links>Sell Digital Asset</Links>
+            <Links>List NFT</Links>
           </Link>
           <Link href="/myassets">
             <Links>My NFTs</Links>
           </Link>
           <Link href="/dashboard">
-            <Links>Creator Dashboard</Links>
+            <Links>Dashboard</Links>
           </Link>
         </LinkContainer>
       </Navigation> 
