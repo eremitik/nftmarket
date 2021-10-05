@@ -13,6 +13,21 @@ const Container = styled.div`
   justify-content: center;
 `
 
+const GridContainer = styled.div`
+  grid-column: 4;
+  gap: 1rem;
+  padding: 1rem;
+
+  @media (max-width: 640px) {
+    grid-column: 1;
+  }
+
+  @media (max-width: 1024px) {
+    grid-column: 2;
+  }
+
+`
+
 export default function Home() {
   const [nfts, setNfts] = useState()
   const [loadingState, setLoadingState] = useState('not-loaded')
@@ -20,6 +35,7 @@ export default function Home() {
   useEffect(() => {
     loadNFTs()
   }, [])
+  console.log('hello')
 
   async function loadNFTs() {
     const provider = new ethers.providers.JsonRpcProvider()
@@ -42,9 +58,12 @@ export default function Home() {
       }
       return item
     }))
+    console.log('items', items)
     setNfts(items)
     setLoadingState('loaded')
   }
+
+  console.log('yoyo', nfts)
 
   async function buyNft(nft) {
       const web3Modal = new Web3Modal()
@@ -70,10 +89,25 @@ export default function Home() {
 
   return (
     <Container>
-      <div>
-
-      </div>
-
+      <GridContainer>
+        {
+          nfts.map((nft, i) => (
+            <div>
+              <img src={nft.image}/>
+              <div>
+                <p>{nft.name}</p>
+              </div>
+              <div>
+                <p>{nft.description}</p>
+              </div>
+              <div>
+                <p>{nft.price} Matic</p>
+                <button>Buy</button>
+              </div>
+            </div>
+          ))
+        }
+      </GridContainer>
    </Container>
   )
 }
