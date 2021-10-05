@@ -33,12 +33,14 @@ export default function Home() {
   const [loadingState, setLoadingState] = useState('not-loaded')
 
   useEffect(() => {
-    loadNFTs()
+    loadNfts()
   }, [])
   console.log('hello')
 
-  async function loadNFTs() {
-    const provider = new ethers.providers.JsonRpcProvider()
+  async function loadNfts() {
+    // configure JsonRpcProvider to mumbai, otherwise black for localhost
+    // const provider = new ethers.providers.JsonRpcProvider("https://rpc-mumbai.matic.today")
+    const provider = new ethers.providers.JsonRpcProvider("https://polygon-mumbai.infura.io/v3/558ead9aa1a1492ba930710831a96e14")
     const tokenContract = new ethers.Contract(nftaddress, NFT.abi, provider)
     const marketContract = new ethers.Contract(nftmarketaddress, Market.abi, provider)
     const data = await marketContract.fetchMarketItems()
@@ -66,6 +68,8 @@ export default function Home() {
   console.log('yoyo', nfts)
 
   async function buyNft(nft) {
+    console.log('pushed')
+    console.log('nft', nft)
       const web3Modal = new Web3Modal()
       const connection = await web3Modal.connect()
       const provider = new ethers.providers.Web3Provider(connection)
@@ -75,11 +79,11 @@ export default function Home() {
 
       const price = ethers.utils.parseUnits(nft.price.toString(), 'ether')
 
-      const transaction = await contract.createMarketSale(nftaddress, nft.tokenId, {
+      const transaction = await contract.createMarketSales(nftaddress, nft.tokenId, {
         value: price
       })
       await transaction.wait()
-      loadNFTs()
+      loadNfts()
   }
 
 
@@ -105,7 +109,7 @@ export default function Home() {
               </div>
               <div>
                 <p>{nft.price} Matic</p>
-                <button>Buy</button>
+                <button onClick={() => buyNft(nft)}>Buy</button>
               </div>
             </div>
           ))
