@@ -29,7 +29,7 @@ const GridContainer = styled.div`
 `
 
 export default function Home() {
-  const [nfts, setNfts] = useState()
+  const [nfts, setNfts] = useState([])
   const [loadingState, setLoadingState] = useState('not-loaded')
 
   useEffect(() => {
