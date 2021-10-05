@@ -1,6 +1,20 @@
 import '../styles/globals.css'
 import Link from 'next/link';
-import styled from 'styled-components';
+import styled, { createGlobalStyle, ThemeProvider } from 'styled-components';
+
+const GlobalStyle = createGlobalStyle`
+  body {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+`
+
+const theme = {
+  color: {
+    primary: 'black',
+  }
+}
 
 const Navigation = styled.nav`
   border-bottom: 1px solid white;
@@ -9,27 +23,39 @@ const Navigation = styled.nav`
 const Logo = styled.p`
   font-size: 40px;
   font-weight: 800;
+  margin: 0;
+`
+
+const LinkContainer = styled.div`
+  display: flex;
+  margin-top: 1rem;
+  margin-bottom: 0.5rem;
+`
+
+const Links = styled.a`
+  margin-right: 1.5rem;
+  cursor: pointer;
 `
 
 function MyApp({ Component, pageProps }) {
   return (
     <div>
       <Navigation>
-        <Logo>My first NFT Marketplace</Logo>
-        <div>
+        <Logo>NFT Marketplace</Logo>
+        <LinkContainer>
           <Link href="/">
-            <a>Home</a>
+            <Links>Home</Links>
           </Link>
           <Link href="/create">
-            <a>Sell Digital Asset</a>
+            <Links>Sell Digital Asset</Links>
           </Link>
           <Link href="/myassets">
-            <a>My NFTs</a>
+            <Links>My NFTs</Links>
           </Link>
           <Link href="/dashboard">
-            <a>Creator Dashboard</a>
+            <Links>Creator Dashboard</Links>
           </Link>
-        </div>
+        </LinkContainer>
       </Navigation> 
       <Component {...pageProps} />
     </div>
