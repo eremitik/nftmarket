@@ -25,7 +25,10 @@ const GridContainer = styled.div`
   @media (max-width: 1024px) {
     grid-column: 2;
   }
+`
 
+const Image = styled.img`
+  border-radius: 15px;
 `
 
 export default function Marketplace() {
@@ -38,9 +41,8 @@ export default function Marketplace() {
   console.log('hello')
 
   async function loadNfts() {
-    // configure JsonRpcProvider to mumbai, otherwise black for localhost
-    // const provider = new ethers.providers.JsonRpcProvider("https://rpc-mumbai.matic.today")
-    const provider = new ethers.providers.JsonRpcProvider("https://polygon-mumbai.infura.io/v3/558ead9aa1a1492ba930710831a96e14")
+    // const provider = new ethers.providers.JsonRpcProvider("") // for local deploy
+    const provider = new ethers.providers.JsonRpcProvider("https://polygon-mumbai.infura.io/v3/558ead9aa1a1492ba930710831a96e14") // mumbai testnet
     const tokenContract = new ethers.Contract(nftaddress, NFT.abi, provider)
     const marketContract = new ethers.Contract(nftmarketaddress, Market.abi, provider)
     const data = await marketContract.fetchMarketItems()
@@ -97,7 +99,7 @@ export default function Marketplace() {
         {
           nfts.map((nft, i) => (
             <div>
-              <img src={nft.image}/>
+              <Image src={nft.image}/>
               <div>
                 <p>{nft.name}</p>
               </div>

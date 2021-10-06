@@ -29,6 +29,11 @@ const LinkContainer = styled.div`
 const Links = styled.a`
   margin-right: 1.5rem;
   cursor: pointer;
+  transition: 0.2s;
+
+  &:hover {
+    color: grey;
+  }
 `
 
 export default function Nav({ Component, pageProps }) {
