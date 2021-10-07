@@ -99,12 +99,13 @@ const Button = styled.button`
   border-radius: 25px;
   padding: 15px 20px;
   cursor: pointer;
-  font-size: 13px;
+  font-size: 15px;
   font-weight: bold;
   transition: 0.3s;
   align-items: center;
   text-decoration: none;
-  :hover {
+
+  &:hover {
     background: white;
     color: black;
   }

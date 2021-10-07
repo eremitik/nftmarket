@@ -42,6 +42,10 @@ const CardContainer = styled.div`
   border-radius: 15px;
   height: 350px;
   width: 250px;
+
+  &:hover {
+    border: 1px solid #484848;
+  }
 `
 
 const ContentContainer = styled.div`
