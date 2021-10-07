@@ -6,7 +6,7 @@ import { nftaddress, nftmarketaddress } from '../config.js';
 import NFT from '../artifacts/contracts/NFT.sol/NFT.json';
 import Market from '../artifacts/contracts/NFTMarket.sol/NFTMarket.json';
 import { messagePrefix } from '@ethersproject/hash';
-import styled from 'styled-components';
+import styled, { css } from 'styled-components';
 
 const Container = styled.div`
   display: flex;
@@ -14,21 +14,72 @@ const Container = styled.div`
 `
 
 const GridContainer = styled.div`
-  grid-column: 4;
+  display: grid;
+  // grid-template-columns: repeat(5, 1fr);
+  grid-template-columns: auto auto auto auto auto;
   gap: 1rem;
   padding: 1rem;
 
   @media (max-width: 640px) {
-    grid-column: 1;
+    grid-template-columns: auto;
+    display: flex;
   }
 
   @media (max-width: 1024px) {
-    grid-column: 2;
+    // grid-template-columns: repeat(2, 1fr);
+    grid-template-columns auto auto:
   }
 `
 
-const Image = styled.img`
+const PriceContainer = styled.div`
+  display: flex;
+`
+
+const CardContainer = styled.div`
+  display: flex;
+  flex-direction: column;
+  border: 1px solid #282828;
   border-radius: 15px;
+  height: 350px;
+  width: 250px;
+`
+
+const ContentContainer = styled.div`
+  margin-top: auto;
+  margin-bottom: 20px;
+`
+
+const Image = styled.img`
+  border-radius: 10px;
+  max-height: 260px; 
+  margin: 20px;
+`
+
+const Typography = styled.p`
+  font-weight: 800;
+  margin-left: 20px;
+  margin-top: 0;
+  margin-bottom: 0;
+
+  ${props => props.description && css`
+    color: #484848;
+  `}  
+
+`
+
+const Button = styled.button`
+  display: inline;
+  margin-left: 90px;
+  border: none;
+  font-weight: 800;
+  color: #3366ff;
+  background-color: transparent;
+  cursor: pointer;
+
+  &:hover {
+    background-color: #282828;
+    border-radius: 5px;
+  }
 `
 
 export default function Marketplace() {
@@ -98,22 +149,21 @@ export default function Marketplace() {
       <GridContainer>
         {
           nfts.map((nft, i) => (
-            <div>
+            <CardContainer>
               <Image src={nft.image}/>
-              <div>
-                <p>{nft.name}</p>
-              </div>
-              <div>
-                <p>{nft.description}</p>
-              </div>
-              <div>
-                <p>Seller: {nft.seller}</p>
-              </div>
-              <div>
-                <p>{nft.price} Matic</p>
-                <button onClick={() => buyNft(nft)}>Buy</button>
-              </div>
-            </div>
+              <ContentContainer>
+                <div>
+                  <Typography>{nft.name}</Typography>
+                </div>
+                <div>
+                  <Typography description>{nft.description}</Typography>
+                </div>
+                <PriceContainer>
+                  <Typography>{nft.price} Matic</Typography>
+                  <Button onClick={() => buyNft(nft)}>Buy</Button>
+                </PriceContainer>
+              </ContentContainer>
+            </CardContainer>
           ))
         }
       </GridContainer>

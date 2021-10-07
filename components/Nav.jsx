@@ -14,7 +14,7 @@ const Navigation = styled.nav`
 const Logo = styled.p`
   display: inline;
   font-size: 40px;
-  font-weight: 800;
+  font-weight: 900;
   margin: 0;
 `
 
@@ -41,16 +41,16 @@ export default function Nav({ Component, pageProps }) {
   return (
     <div>
       <Navigation>
-        <Logo><Link href="/">NFT Market</Link></Logo>
+        <Logo><Link href="/">Looot</Link></Logo>
         <LinkContainer>
           <Link href="/nftmarket">
             <Links>Market</Links>
           </Link>
           <Link href="/create">
-            <Links>List NFT</Links>
+            <Links>Create</Links>
           </Link>
-          <Link href="/myassets">
-            <Links>My NFTs</Links>
+          <Link href="/collection">
+            <Links>Collection</Links>
           </Link>
           <Link href="/dashboard">
             <Links>Dashboard</Links>
