@@ -2,12 +2,11 @@ import Link from 'next/link';
 import styled from 'styled-components';
 
 const Navigation = styled.nav`
-  // border-bottom: 1px solid white;
   overflow: hidden;
   position: fixed;
   top: 0;
   width: 100%;
-  backdrop-filter: blur(10px);
+  backdrop-filter: blur(30px);
   height: 100px;
 
 ` 
@@ -27,6 +26,8 @@ const LinkContainer = styled.div`
 `
 
 const Links = styled.a`
+  font-weight: 900;
+  font-size: 1rem;
   margin-right: 1.5rem;
   cursor: pointer;
   transition: 0.2s;
@@ -40,12 +41,12 @@ export default function Nav({ Component, pageProps }) {
   return (
     <div>
       <Navigation>
-        <Logo><Link href="/">NFTeee</Link></Logo>
+        <Logo><Link href="/">NFT Market</Link></Logo>
         <LinkContainer>
           <Link href="/nftmarket">
             <Links>Market</Links>
           </Link>
-          <Link href="/createitem">
+          <Link href="/create">
             <Links>List NFT</Links>
           </Link>
           <Link href="/myassets">
