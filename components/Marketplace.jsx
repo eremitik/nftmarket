@@ -15,7 +15,6 @@ const Container = styled.div`
 
 const GridContainer = styled.div`
   display: grid;
-  // grid-template-columns: repeat(5, 1fr);
   grid-template-columns: auto auto auto auto auto;
   gap: 1rem;
   padding: 1rem;
@@ -26,7 +25,6 @@ const GridContainer = styled.div`
   }
 
   @media (max-width: 1024px) {
-    // grid-template-columns: repeat(2, 1fr);
     grid-template-columns auto auto:
   }
 `
