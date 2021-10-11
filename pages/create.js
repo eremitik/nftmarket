@@ -1,6 +1,6 @@
 import PostNft from '../components/PostNft.jsx';
 
-export default function CreateItem () {
+export default function Create() {
 
   return (
     <div>

@@ -1,5 +1,4 @@
 import '../styles/globals.css'
-import Link from 'next/link';
 import styled, { createGlobalStyle, ThemeProvider } from 'styled-components';
 import Nav from '../components/Nav.jsx';
 
