@@ -25,7 +25,7 @@ const GridContainer = styled.div`
   }
 
   @media (max-width: 1024px) {
-    grid-template-columns auto auto:
+    grid-template-columns: auto auto;
   }
 `
 
